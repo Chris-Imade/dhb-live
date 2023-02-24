@@ -23,14 +23,9 @@
     <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
     <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorSkinCSS">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            overflow-x: hidden !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
+        
     </style>
 </head>
 
@@ -262,7 +257,7 @@
                                 <div class="white_card_header">
                                     <div class="box_header m-0">
                                         <div class="main-title">
-                                            <h3 class="m-0">Your Portfolio</h3>
+                                            <h3 class="m-0">Approved Deposits</h3>
                                         </div>
                                         <div class="header_more_tool">
                                             <div class="dropdown">
@@ -309,6 +304,7 @@
                             </div>
                         </div>
                         
+                        {% if transactions %}
                         <div class="col-lg-12">
                             <div class="white_card mb_30 card_height_100">
                                 <div class="white_card_header ">
@@ -356,6 +352,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        {% endif %}
                     </div>
                 </div>
             </div>

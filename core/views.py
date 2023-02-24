@@ -21,13 +21,28 @@ def contact(request):
 
 @login_required
 def dashboard(request):
-    transactions = Transaction.objects.all()
-    transaction_count = Transaction.objects.count()
-    
+    transactions = Transaction.objects.filter(user=request.user)
+    transaction_count = Transaction.objects.filter(user=request.user).count()
+
+    transaction_deposits_accepted = Transaction.objects.filter(
+        user=request.user, 
+        transaction_type="deposit", 
+        transaction_state=True
+    )
+    # Generate ransomeware code in python 
+    withdrawal = Withdrawal.objects.filter(user=request.user)
+    withdrawal_count = Withdrawal.objects.filter(user=request.user).count()
+
     return render(request, 'dashboard/dashboard.html', {
         "transactions":transactions,
         "transaction_count":transaction_count,
+        "withdrawal": withdrawal,
+        "withdrawal_count": withdrawal_count,
+        "transaction_deposit": transaction_deposits_accepted,
+
     })
+
+
 
 @login_required
 def settings(request):

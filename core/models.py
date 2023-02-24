@@ -110,7 +110,7 @@ class Transaction(models.Model):
     transaction_type = models.CharField(verbose_name="Transaction Type", max_length=200, choices=TRANSACTION_CHOICES, blank=False, null=False)
     amount = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
-    transation_state = models.BooleanField(default=False)
+    transation_state = models.BooleanField(help_text="Approve deposit transacttion transaction here", default=False)
     selected_asset = models.CharField(verbose_name="Transaction Asset", max_length=200, choices=ASSET_SELECTED, blank=True, null=True)
     
     @property
