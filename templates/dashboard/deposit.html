@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>BitCrypto</title>
+    <link rel="icon" href="{% static 'img/mini_logo.png' %}" type="image/png">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap1.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/themefy_icon/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/font_awesome/css/all.min.css' %}" />
+
+
+    <link rel="stylesheet" href="{% static 'vendors/scroll/scrollable.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/metisMenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorSkinCSS">
+    <style>
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body class="crm_body_bg">
+
+    <!-- START MODALS -->
+    <div class="modal__wrapper usd-popup__wrapper">
+        <div class="modal__content">
+            <h6  class="text-sm">Your Order has been placed successfully. USDT</h6>
+            <div style="display: flex;" class="scan__and__pay">
+                <img src="{{ admin_details.wallet_barcode.url }}" width="150" height="100" alt="auto generated qr-code">
+                <h6 style="margin-left: 20px;">Scan QR Code or use the wallet address</h6>
+            </div>
+            <p style="margin-left: 20px; color: darkslateblue; font-weight: 700; margin-top: 10px; margin-bottom: 10px;">Please send <b id="usdtDeclaration">122424 USDT ($207474002)</b> to the address below. The balance will appear in your account only after transaction gets confirmed by our team</p>
+            <div class="">
+                <span>Copy address: </span><a  class="addrs" href="#">{{admin_details.wallet_address}}</a>
+            </div>
+            
+            
+            <div style="width: 90%; position: relative;">
+                <button type="button" class="close-usdt mt_30 btn btn-danger position-absolute top-100 start-100 translate-middle">Close</button>
+                <button id="approvedUSDT" class="mt_30 btn btn-success position-absolute start-50 translate-middle">Approved</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal__wrapper ether-popup__wrapper">
+        <div class="modal__content">
+            <h6  class="text-sm">Your Order has been placed successfully. ETHER</h6>
+            <div style="display: flex;" class="scan__and__pay">
+                <img src="{{ admin_details.wallet_barcode.url }}" width="150" height="100" alt="auto generated qr-code">
+                <h6 style="margin-left: 20px;">Scan QR Code or use the wallet address</h6>
+            </div>
+            <p style="margin-left: 20px; color: darkslateblue; font-weight: 700; margin-top: 10px; margin-bottom: 10px;">Please send <b id="etherDeclaration">122424 ETH ($207474002)</b> to the address below. The balance will appear in your account only after transaction gets confirmed by our team</p>
+            <div class="">
+                <span>Copy address: </span><a  class="addrs" href="#">{{admin_details.wallet_address}}</a>
+            </div>
+            
+            
+            <div style="width: 90%; position: relative;">
+                <button type="button" class="close-ether mt_30 btn btn-danger position-absolute top-100 start-100 translate-middle">Close</button>
+                <button id="approvedETHER" class="mt_30 btn btn-success position-absolute start-50 translate-middle">Approved</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal__wrapper btc-popup__wrapper">
+        <div class="modal__content">
+            <h6  class="text-sm">Your Order has been placed successfully. BTC</h6>
+            <div style="display: flex;" class="scan__and__pay">
+                <img src="{{ admin_details.wallet_barcode.url }}" width="150" height="100" alt="auto generated qr-code">
+                <h6 style="margin-left: 20px;">Scan QR Code or use the wallet address</h6>
+            </div>
+            <p style="margin-left: 20px; color: darkslateblue; font-weight: 700; margin-top: 10px; margin-bottom: 10px;">Please send <b id="btcDeclaration">122424 BTC ($207474002)</b> to the address below. The balance will appear in your account only after transaction gets confirmed by our team</p>
+            <div class="">
+                <span>Copy address: </span><a  class="addrs" href="#">{{admin_details.wallet_address}}</a>
+            </div>
+            
+            
+            <div style="width: 90%; position: relative;">
+                <button type="button" class="close-btc mt_30 btn btn-danger position-absolute top-100 start-100 translate-middle">Close</button>
+                <button id="approvedBTC" class="mt_30 btn btn-success position-absolute start-50 translate-middle">Approved</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- END MODALS -->
+
+    <nav class="sidebar dark_sidebar">
+        <div class="logo d-flex justify-content-between">
+            <a class="large_logo" href="#"><img src="{% static 'img/logo_white.png' %}" alt=""></a>
+            <a class="small_logo" href="#"><img src="{% static 'img/mini_logo.png' %}" alt=""></a>
+            <div class="sidebar_close_icon d-lg-none">
+                <i class="ti-close"></i>
+            </div>
+        </div>
+        <ul id="sidebar_menu">
+            <li class="">
+                <a href="{% url 'dashboard' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/1.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'deposit' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/2.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Deposit</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'withdraw' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Withdrawal</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'transfer' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/7.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Funds Transfer</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'history' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/5.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Transaction History</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'settings' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/General.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Settings</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="main_content dashboard_part large_header_bg">
+
+        <div class="container-fluid g-0">
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            <img src="{% static 'img/line_img.png' %}" alt="">
+                        </div>
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <div class="header_notification_warp d-flex align-items-center">
+                            </div>
+                            <div class="profile_info d-flex align-items-center">
+                                <div class="profile_thumb mr_20">
+                                    <img src="{% static 'assets/Male.png' %}" alt="#">
+                                </div>
+                                <div class="author_name">
+                                    <h4 class="f_s_15 f_w_500 mb-0">{{request.user.username}}</h4>
+                                    <p class="f_s_12 f_w_400">Customer</p>
+                                </div>
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Hi,</p>
+                                        <h5>{{request.user.username}}!</h5>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <a href="{% url 'settings' %}">My Profile </a>
+                                        <a href="{% url 'settings' %}">Settings</a>
+                                        <a href="{% url 'logout' %}">Log Out </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_content_iner overly_inner ">
+            <div class="container-fluid p-0 ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="white_card_header">
+                                <div class="white_box_tittle">
+                                    <h4>Deposit Funds</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if messages %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="white_card_header">
+                                <div class="white_box_tittle">
+                                    {% for message in messages %}
+                                    <div class="{{message.tags}}" style="font-size: 14px;">
+                                        {{message}}
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="row">
+                    <div class="accordion" id="accordionExample">
+                        <!-- USDT -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            USDT
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="col-lg-12">
+                                <div class="white_card card_height_100">
+                                    <div class="white_card_body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Amount</label>
+                                                <div class="common_input mb_20">
+                                                    <input id="usdtInput" type="number" placeholder="50">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="create_report_btn mt_30">
+                                    <button name="submit" class="btn_1 w-100 btn btn-primary usdt-btn">SEND</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            BTC
+                        </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="col-lg-12">
+                                    <div class="white_card card_height_100">
+                                        <div class="white_card_body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label class="form-label">Amount</label>
+                                                    <div class="common_input mb_20">
+                                                        <input id="btcInput" type="number" placeholder="1.23">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="create_report_btn mt_30">
+                                        <button name="submit" class="btn_1 w-100 btn btn-primary btc-btn">SEND</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            ETH
+                        </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="col-lg-12">
+                                    <div class="white_card card_height_100">
+                                        <div class="white_card_body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label class="form-label">Amount</label>
+                                                    <div class="common_input mb_20">
+                                                        <input id="etherInput" type="number" placeholder="2.52">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="create_report_btn mt_30">
+                                        <button name="submit" class="btn_1 w-100 btn btn-primary ether-btn">SEND</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <style>
+            .modal__wrapper {
+                position: absolute;
+                display: none;
+                width: 100vw;
+                height: 100vh;
+                background-color: #0000006c;
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+            }
+            .show{
+                display: block !important;
+            }
+            .modal__content {
+                border-radius: 20px;
+                background-color: white;
+                padding: 20px;
+                width: 500px;
+                height: 350px;
+                -webkit-box-shadow: -2px -1px 15px 7px rgba(0,0,0,0.5);
+                -moz-box-shadow: -3px -2px 30px 14px rgba(0,0,0,0.425);
+                box-shadow: -4px -3px 45px 21px rgba(0,0,0,0.35);
+                margin-top: 200px;
+                margin-left: 500px;
+            }
+            .addrs:hover {
+                text-decoration: underline;
+            }
+        </style>
+        
+        <script>
+            
+            const closeBTCModal = document.querySelector(".close-btc");
+            const closeETHERModal = document.querySelector(".close-ether");
+            const closeUSTDModal = document.querySelector(".close-usdt");
+
+            const btcDeclaration = document.getElementById("btcDeclaration");
+            const etherDeclaration = document.getElementById("etherDeclaration");
+            const usdtDeclaration = document.getElementById("usdtDeclaration");
+            
+
+            // USDT WRAPPER STARTS
+            const usdWrapper = document.querySelector(".usd-popup__wrapper");
+            document.querySelector(".usdt-btn").addEventListener("click", () => {
+                const usdtInput = document.getElementById("usdtInput").value
+                usdtDeclaration.innerText = `${usdtInput} ETH - ($${usdtInput * Number('{{admin_details.usdt_value_in_dollars}}')})`
+                if(usdWrapper.classList.contains("show")){
+                    usdWrapper.classList.remove("show");
+                }else {
+                    usdWrapper.classList.add("show");
+                }
+            })
+
+            closeUSTDModal.addEventListener("click", () => {
+                if(usdWrapper.classList.contains("show")) {
+                    usdWrapper.classList.remove("show")
+                }
+            });
+
+            // USDT WRAPPER Ends
+
+            // BTC WRAPPER Starts
+            const btcWrapper = document.querySelector(".btc-popup__wrapper");
+            document.querySelector(".btc-btn").addEventListener("click", () => {
+                const btcInput = document.getElementById("btcInput").value
+                btcDeclaration.innerText = `${btcInput} BTC - ($${btcInput * Number('{{admin_details.bitcoin_value_in_dollars}}')})`
+                if(btcWrapper.classList.contains("show")){
+                    btcWrapper.classList.remove("show");
+                }else {
+                    btcWrapper.classList.add("show");
+                    
+                }
+            })
+
+            closeBTCModal.addEventListener("click", () => {
+                if(btcWrapper.classList.contains("show")) {
+                    btcWrapper.classList.remove("show")
+                }
+            });
+            // BTC WRAPPER Ends
+
+
+            // ETHERS WRAPPER Starts
+            const etherWrapper = document.querySelector(".ether-popup__wrapper");
+            document.querySelector(".ether-btn").addEventListener("click", () => {
+                const etherInput = document.getElementById("etherInput").value
+                etherDeclaration.innerText = `${etherInput} ETH - ($${etherInput * Number('{{admin_details.etherium_value_in_dollars}}')})`
+                if(etherWrapper.classList.contains("show")){
+                    etherWrapper.classList.remove("show");
+                }else {
+                    etherWrapper.classList.add("show");
+                }
+            })
+
+            closeETHERModal.addEventListener("click", () => {
+                if(etherWrapper.classList.contains("show")) {
+                    etherWrapper.classList.remove("show")
+                }
+            });
+
+            
+            // ETHERS WRAPPER Ends
+
+
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+
+            const csrftoken = getCookie('csrftoken')
+
+
+
+            document.getElementById("approvedUSDT").onclick = (e) => {
+                const usdtInput = document.getElementById("usdtInput").value
+                e.preventDefault()
+                if (Number(usdtInput) > 0){
+                    fetch("/api/deposit/", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrftoken
+                        },
+                        body: JSON.stringify({
+                            transaction_type: "deposit",
+                            amount: usdtInput,
+                            user_id: Number("{{request.user.id}}"),
+                            transaction_kind: "usdt",
+                        })
+                    })
+                    .then(res => {
+                        if (res.ok){
+                            window.location.href = "/history/"
+                        }
+                        return res.json()
+                    })
+                    .then(data => console.log(data))
+                }
+                
+            }
+
+
+            document.getElementById("approvedETHER").onclick = (e) => {
+                const etherInput = document.getElementById("etherInput").value
+                e.preventDefault()
+                if (Number(etherInput) > 0) {
+                    fetch("/api/deposit/", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrftoken
+                        },
+                        body: JSON.stringify({
+                            transaction_type: "deposit",
+                            amount: etherInput,
+                            user_id: Number("{{request.user.id}}"),
+                            transaction_kind: "Etherium",
+                        })
+                    })
+                    .then(res => {
+                        if (res.ok){
+                            window.location.href = "/history/"
+                        }
+                        return res.json()
+                    })
+                    .then(data => console.log(data))
+                }
+                
+            }
+
+
+            document.getElementById("approvedBTC").onclick = (e) => {
+                
+                const btcInput = document.getElementById("btcInput").value
+                e.preventDefault()
+                if (Number(btcInput) > 0) {
+                    fetch("/api/deposit/", {
+                    method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrftoken
+                        },
+                        body: JSON.stringify({
+                            transaction_type: "deposit",
+                            amount: btcInput,
+                            user_id: Number("{{request.user.id}}"),
+                            transaction_kind: "Bitcoin",
+                        })
+                    })
+                    .then(res => {
+                        if (res.ok){
+                            window.location.href = "/history/"
+                        }
+                        return res.json()
+                    })
+                    .then(data => console.log(data))
+                }
+            }
+
+
+            
+            
+            
+
+        </script>
+
+
+        <div class="footer_part">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer_iner text-center">
+                            <p>2023 © DHB - Your financial freedom is our goal.</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <div id="back-top" style="display: none;">
+        <a title="Go to Top" href="#">
+            <i class="ti-angle-up"></i>
+        </a>
+    </div>
+
+    <script src="{% static 'js/jquery1-3.4.1.min.js' %}"></script>
+
+    <script src="{% static 'js/popper1.min.js' %}"></script>
+
+    <script src="{% static 'js/bootstrap1.min.js' %}"></script>
+
+    <script src="{% static 'js/metisMenu.js' %}"></script>
+
+    <script src="{% static 'vendors/scroll/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'vendors/scroll/scrollable-custom.js' %}"></script>
+
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

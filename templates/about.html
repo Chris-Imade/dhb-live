@@ -1,0 +1,221 @@
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Horizon Bank - Online Banking made easy | Open an account online.</title>
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    <link rel="icon" href="{% static 'assets/diamond - cropped (2).png' %}" type="image/png">
+    {% endcompress %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="overflow-x-hidden">
+    <style>
+        body {
+            overflow-x: hidden !important;
+        }
+    </style>
+    <div class="flex justify-between items-center w-full bg-[#30a52e]">
+        <nav class="hidden lg:flex justify-between items-center px-5 xl:w-full">
+            <div class="left xl:mr-80">
+                <ul class="flex items-center">
+                    <li class="lg:text-[1.2rem] p-2 border-r-[1px] border-[#383838] border-solid">
+                        <a href="">
+                            <img  class="md:w-[150px] " src=" {% static 'assets/diamond-on-dark.png' %}" height="26" alt="app-logo">
+                        </a>
+                    </li>
+                    <!-- <li class="text-white lg:text-[1rem] p-2 py-6 hover:border-b-2 border-solid border-yellow-300"><a href="">Personal</a></li>
+                    <li class="text-white lg:text-[1rem] p-2 py-6 hover:border-b-2 border-solid border-yellow-300"><a href="">Corporate</a></li> -->
+                </ul>
+            </div>
+            <div class="div">
+                <ul class="flex">
+                    <li class="text-white lg:text-[1rem] p-2 py-6 hover:border-b-2 border-solid border-yellow-300"><a href="{% url 'about' %}">About Us</a></li>
+                    <li class="text-white lg:text-[1rem] p-2 py-6 hover:border-b-2 border-solid border-yellow-300"><a href="{% url 'contact' %}">Contact Us</a></li>
+                    <a href="{% url 'signup' %}">
+                        <li class="transition-all duration-500 ease-in-out text-white bg-[#016076] rounded-lg px-4 lg:text-[1rem] p-2 my-5 hover:text-[#016076] hover:bg-white cursor-pointer">Sign Up</a>
+                    </a>
+                    <a href="{% url 'login' %}">
+                        <li class="transition-all duration-500 ease-in-out text-white lg:text-[1rem] p-2 my-5 hover:bg-[#f50404] rounded-lg mx-4 px-5 cursor-pointer">Login</li>
+                    </a>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+
+    <nav class="px-12 py-4 flex justify-between items-center bg-[#30a52e] lg:hidden">
+        <img class="w-[160px] h-[53px] border-r-[1px] border-solid border-gray-400" src="{% static 'assets/diamond-on-dark.png' %}" alt="">
+        <span onclick="document.querySelector('.mobile__nav').classList.remove('hidden')" class="open__nav hover:cursor-pointer text-white text-xl">Menu</span>
+    </nav>
+
+
+  
+    <style>
+        .about__text {
+            margin: 100px 40px;
+        }
+    </style>
+
+    <!-- Carousel -->
+    <div id="default-carousel" class="relative" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class="relative h-56 overflow-hidden md:h-[87vh]">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+        </div>
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        </div>
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+      <div class="absolute top-[15rem] right-[32rem] z-50 text-white text-7xl font-bold"><h1>About Us</h1></div>
+    </div>
+
+    <!-- in not less than 15 words talk about Lukas as the Managing Director of Diamond horizon bank -->
+
+   <div class="about__text">
+        <h1 class="text-4xl lg:ml-12">About us</h1>
+        <!-- generate a letter not less that 250 words around this - Diamond Horizon Back is an Online Bank. We provide excellent customer service and have a wide range of products to choose from. We prices are competitive and our delivery times are fast. Highly recommended! -->
+        <p class="lg:mx-12">We are delighted to introduce you to Diamond Horizon Bank, an online banking service that offers excellent customer service and a wide range of products. Our prices are competitive and our delivery times are fast, so you can be sure that you’re getting the best value for your money. 
+
+            At Diamond Horizon Bank, we understand that customers have different needs and preferences. That’s why we offer a variety of products to choose from, including savings accounts, checking accounts, credit cards, loans and more. We also provide helpful tools such as budgeting calculators and financial advice to help you make the most of your money. 
+            
+            Our customer service team is always available to answer any questions or concerns you may have about our services. We strive to provide the best customer experience possible and take pride in our commitment to providing excellent customer service. 
+            
+            We believe that Diamond Horizon Bank is the perfect choice for all your banking needs. Our competitive prices and fast delivery times make us a great option for those looking for an online banking solution. We highly recommend giving us a try! 
+            
+            Thank you for considering Diamond Horizon Bank as your online banking provider. We look forward to serving you soon! </p>
+   </div>
+
+   <!-- card with picture -->
+   <div class="mx-5 justify-center mb-24 flex flex-col items-center justify-center">
+    <h2 class="mx-5 lg:mx-24 mb-5 text-2xl font-semibold">Our Leads</h2>
+
+    <div class="flex flex-wrap lg:space-x-5">
+        <div class="pb-2 max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <img class="rounded-t-lg max-w-xs h-[400px] w-full object-cover" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
+            </a>
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Liam James</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><span class="font-semibold ">Chief Technology Officer: <br /></span> Liam is a great person who is always willing to help and offer support. He is kind and generous.</p>
+                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Read more
+                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
+    
+        <div class="pb-2 max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <img class="rounded-t-lg max-w-xs h-[400px] w-full object-cover" src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
+            </a>
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Charlotte Adams</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><span class="font-semibold ">Chief Executive Officer: <br /></span>Charlotte is the CEO of Diamond Horizon Bank, a leading financial institution in the industry. She is a highly experienced leader with a proven track record of success.</p>
+                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Read more
+                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
+    
+        <div class="pb-2 max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <img class="rounded-t-lg max-w-xs h-[400px] w-full object-cover" src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=412&q=80" alt="" />
+            </a>
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Lucas Timothy</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><span class="font-semibold ">Managing Director: <br /></span>Lukas is an experienced Managing Director, with a proven track record of success in leading teams and achieving results. </p>
+                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Read more
+                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+   </div>
+
+    <footer class="bg-[#30a52e] mt-[-2rem] pt-[5rem] flex flex-col w-full">
+        <div class="w-[100%] flex justify-center items-center">
+            <div class="flex lg:w-[800px]">
+                <input type="text" placeholder="Subscribe to our newsletter" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+                <button type="submit" class="text-white bg-green-700 hover:bg-greeen-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-r-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Subscribe</button>
+            </div>
+        </div>
+        <div class="px-6 py-20 bg-[#112231] mt-24">
+            <h2 class="text-white mb-5 text-xl">Existing customers can get help via the app</h2>
+            <p class="footer__text text-white max-w-[60rem] font-thin">Diamond Horizon Bank Limited is a company registered in England and Wales (No. 09446231). Diamond Horizon Bank Ltd is authorised by the Prudential Regulation Authority (PRA) and regulated by the Financial Conduct Authority and the Prudential Regulation Authority. Our Financial Services Register number is 730427.</p>
+        </div>
+    </footer>
+
+ <!-- Menu  -->
+
+    <div class="mobile__nav hidden w-full h-screen bg-[#02060952] fixed top-0 bottom-0 left-0 right-0">
+        <div class="w-[90%] sm:w-[70%] md:w-[50%] fixed top-0 right-0 h-screen bg-white">
+            <div class="relative w-full h-full">
+                <div class="w-full max-w-[86rem] mx-auto">
+                    <div class="flex justify-between items-center p-5">
+                        <img class="w-[129px]" src="{% static 'assets/diamond-on-dark.png' %}" alt="">
+                        <img onclick="document.querySelector('.mobile__nav').classList.add('hidden')" id="close" class="w-[15px] h-[15px] hover:cursor-pointer" src="{% static 'assets/close.png' %}" alt="">
+                    </div>
+                    <div class="mt-11 flex flex-col items-start gap-6">
+                        <span><a class="border-l-[10px] px-3 py-4 hover:border-[#016076] border-solid" href="#">Business</a></span>
+                        <span><a class="border-l-[10px] px-3 py-4 hover:border-[#016076] border-solid" href="#">Personal</a></span>
+                    </div>
+                    <div class="mx-10 mt-12 w-full">
+                       <hr>
+                    <!-- <div class="w-full mt-11 flex flex-col items-start gap-6"> -->
+                        <span class="block"><a class="inline-block w-full border-b-[1px] border-solid border-[rgba(195,200,207,.4)] px-3 py-4" href="#">About Us</a></span>
+                        <span class="block"><a class="inline-block w-full border-b-[1px] border-solid border-[rgba(195,200,207,.4)] lg:px-3 py-4 text-[1.2rem] text-[#112231]" href="{% url 'contact' %}">Contacts</a></span>
+                    <!-- </div> -->
+                        <button class="hover:opacity-[0.8] mb-5 md:mb-0 rounded-md bg-[#016076] text-white font-bold py-3 block px-20 mt-6 lg:mb-4 xl:mb-0 lg:text-lg"><a href="{% url 'login' %}">Login</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+</body>
+</html>

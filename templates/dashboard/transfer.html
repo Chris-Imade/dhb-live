@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>BitCrypto</title>
+    <link rel="icon" href="{% static 'img/mini_logo.png' %}" type="image/png">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap1.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/themefy_icon/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/font_awesome/css/all.min.css' %}" />
+
+
+    <link rel="stylesheet" href="{% static 'vendors/scroll/scrollable.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/metisMenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorSkinCSS">
+
+    <style>
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body class="crm_body_bg">
+
+    <div class="modal__wrapper">
+        <div class="modal__content">
+            <h2 style="margin: auto; text-align: center; margin-top: 100px;">Insufficient Funds</h2>
+            <div style="width: 90%; position: relative;">
+                <button type="button" class="close mt_30 btn btn-danger position-absolute start-50 translate-middle">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sidebar dark_sidebar">
+        <div class="logo d-flex justify-content-between">
+            <a class="large_logo" href="#"><img src="{% static 'img/logo_white.png' %}" alt=""></a>
+            <a class="small_logo" href="#"><img src="{% static 'img/mini_logo.png' %}" alt=""></a>
+            <div class="sidebar_close_icon d-lg-none">
+                <i class="ti-close"></i>
+            </div>
+        </div>
+        <ul id="sidebar_menu">
+            <li class="">
+                <a href="{% url 'dashboard' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/1.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'deposit' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/2.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Deposit</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'withdraw' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Withdrawal</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'transfer' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/7.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Funds Transfer</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'history' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/5.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Transaction History</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'settings' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/General.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Settings</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <section class="main_content dashboard_part large_header_bg">
+
+        <div class="container-fluid g-0">
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            <img src="{% static 'img/line_img.png' %}" alt="">
+                        </div>
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <div class="header_notification_warp d-flex align-items-center">
+                                <!-- <li>
+                                    <a class="CHATBOX_open nav-link-notify" href="#"> <img
+                                            src="{% static 'img/icon/msg.svg' %}" alt=""> </a>
+                                </li> -->
+                                <li>
+                                    <!-- <a class="bell_notification_clicker nav-link-notify" href="#"> <img
+                                            src="{% static 'img/icon/bell.svg' %}" alt="">
+
+                                    </a> -->
+
+                                    <div class="Menu_NOtification_Wrap">
+                                        <div class="notification_Header">
+                                            <h4>Notifications</h4>
+                                        </div>
+                                        <div class="Notification_body">
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="{% static 'img/staf/2.png' %}" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Cool Marketing </h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="{% static 'img/staf/4.png' %}" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Awesome packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="{% static 'img/staf/3.png' %}" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>what a packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="{% static 'img/staf/2.png' %}" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Cool Marketing </h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="{% static 'img/staf/4.png' %}" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Awesome packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="{% static 'img/staf/3.png' %}" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>what a packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nofity_footer">
+                                            <div class="submit_button text-center pt_20">
+                                                <a href="#" class="btn_1 green">See More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </div>
+                            <div class="profile_info d-flex align-items-center">
+                                <div class="profile_thumb mr_20">
+                                    <img src="{% static 'assets/Male.png' %}" alt="#">
+                                </div>
+                                <div class="author_name">
+                                    <h4 class="f_s_15 f_w_500 mb-0">{{request.user.username}}</h4>
+                                    <p class="f_s_12 f_w_400">Customer</p>
+                                </div>
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Hi,</p>
+                                        <h5>{{request.user.username}}!</h5>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <a href="{% url 'settings' %}">My Profile </a>
+                                        <a href="{% url 'settings' %}">Settings</a>
+                                        <a href="{% url 'logout' %}">Log Out </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_content_iner overly_inner ">
+            <form method="POST" class="container-fluid p-0 ">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="white_card_header">
+                                <div class="white_box_tittle">
+                                    <h4>Transfer Funds</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if messages %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="white_card_header">
+                                <div class="white_box_tittle">
+                                    {% for message in messages %}
+                                    <div class="{{message.tags}}" style="font-size: 14px;">
+                                        {{message}}
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                    
+
+                <div class="row">
+                    <div class="form-floating col-6">
+                        <select name="cash_balance" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option value="Capital Balance ($0.00)" selected>Capital Balance ($0.00)</option>
+                            <option value="Profit Balance ($0.00)">Profit Balance ($0.00)</option>
+                            <option value="Bonus Balance ($0.00)">Bonus Balance ($0.00)</option>
+                        </select>
+                        <label style="margin-left: 15px;" for="floatingSelect">Select Balance Type</label>
+                    </div>
+
+                    <div class="form-floating col-6">
+                        <select id="changePaymentDetails" name="changePaymentDetails" class="form-select" aria-label="Floating label select example">
+                            <option value="" selected>------------</option>
+                            <option value="BankTransfer">Bank Transfer</option>
+                            <option value="Bitcoin">Bitcoin</option>
+                            <option value="Etherium">Etherium</option>
+                            <option value="CashApp">Cash App</option>
+                            <option value="Paypal">PayPal</option>
+                        </select>
+                        <label style="margin-left: 15px;" for="floatingSelect">Select Payment method</label>
+                    </div>
+
+                    <div class="mb-3 mt_30" id="wallet_details">
+                        <label for="exampleFormControlInput1" class="form-label">Recipient's Wallet address</label>
+                        <input type="text" name="wallet_address" class="form-control" id="wallet_address" placeholder="Enter wallet address">
+                    </div>
+                    <div id="bank_details">
+                        <div class="mb-3 mt_30">
+                            <label for="exampleFormControlInput1" class="form-label">Recipient's Account Number</label>
+                            <input type="text" class="form-control" name="account_number" id="account_number" placeholder="Enter Account Number">
+                        </div>
+                        <div class="mb-3 mt_30">
+                            <label for="exampleFormControlInput1" class="form-label">Recipient's Account Name</label>
+                            <input type="text" class="form-control" name="account_name" id="account_name" placeholder="Enter Account Name">
+                        </div>
+                        <div class="mb-3 mt_30">
+                            <label for="exampleFormControlInput1" class="form-label">Recipient's Bank Name</label>
+                            <input type="text" class="form-control" name="bank_name" id="bank_name" placeholder="Enter Bank Name">
+                        </div>
+                        <div class="mb-3 mt_30">
+                            <label for="exampleFormControlInput1" class="form-label">Recipient's Swift Code</label>
+                            <input type="text" class="form-control" name="swift_code" id="swift_code" placeholder="Enter Swift Code">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 mt_30" id="paypalDetails">
+                        <label for="exampleFormControlInput1" class="form-label">Recipient's Paypal Email</label>
+                        <input type="text" class="form-control" name="paypal_email" id="paypal_email" placeholder="Enter Paypal Email">
+                    </div>
+                    <div class="mb-3 mt_30" id="cashTagDetails">
+                        <label for="exampleFormControlInput1" class="form-label">Recipient's CashApp Tag</label>
+                        <input type="text" class="form-control" name="cashtag" id="cashtag" placeholder="Enter CashTag">
+                    </div>
+                    
+                    <div class="mb-3" id="AmountInput">
+                        <label for="exampleFormControlTextarea1" class="form-label">Amount</label>
+                        <input required="" type="number" class="amountToWithdraw form-control" name="amount" id="exampleFormControlInput1" placeholder="Enter amount">
+                    </div>
+                </div>
+                  <div class="row mt-5" id="PaymentBtn">
+                    <div class="col-lg-12 position-relative">
+                        <button id="send" class="send position-absolute top-50 start-50 translate-middle btn btn-primary">Process Transfer</button>
+                    </div>
+                  </div>
+            </form>
+        </div>
+
+        <div class="footer_part">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer_iner text-center">
+                            <p>2023 © DHB - Your financial freedom is our goal.</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <div id="back-top" style="display: none;">
+        <a title="Go to Top" href="#">
+            <i class="ti-angle-up"></i>
+        </a>
+    </div>
+
+    <style>
+        .modal__wrapper {
+            position: fixed;
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background-color: #0000006c;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .show {
+            display: block !important;
+        }
+        .modal__content {
+            border-radius: 20px;
+            background-color: white;
+            padding: 20px;
+            width: 500px;
+            height: 350px;
+            -webkit-box-shadow: -2px -1px 15px 7px rgba(0,0,0,0.5);
+            -moz-box-shadow: -3px -2px 30px 14px rgba(0,0,0,0.425);
+            box-shadow: -4px -3px 45px 21px rgba(0,0,0,0.35);
+            margin-top: 200px;
+            margin-left: 500px;
+        }
+        .addrs:hover {
+            text-decoration: underline;
+        }
+    </style>
+    
+    <script>
+        const modalWrapper = document.querySelector(".modal__wrapper");
+        const closeModal = document.querySelector(".close");
+        // const amount = document.querySelector('.amountToWithdraw')
+        
+        document.querySelector(".send").addEventListener("click", (e) => {
+            const amount = document.querySelector('.amountToWithdraw')
+            const userAccountBalance = Number("{{user_balance}}");
+            const amountToWithdraw = Number(amount.value)
+
+            if (!amountToWithdraw) {
+                e.preventDefault()
+            }
+
+            if (userAccountBalance <= amountToWithdraw){
+                e.preventDefault()
+                if(modalWrapper.classList.contains("show")){
+                    modalWrapper.classList.remove("show");
+                }else {
+                    modalWrapper.classList.add("show");
+                }
+            }
+
+            
+        })
+
+        closeModal.addEventListener("click", () => {
+            if(modalWrapper.classList.contains("show")) {
+                modalWrapper.classList.remove("show")
+            };
+        });
+
+    </script>
+
+    <script>
+
+        const changePaymentDetails = document.getElementById("changePaymentDetails");
+
+
+        const bank_details = document.getElementById("bank_details");
+        const paypalDetails = document.getElementById("paypalDetails");
+        const cashTagDetails = document.getElementById("cashTagDetails");
+        const wallet_details = document.getElementById("wallet_details");
+
+        const amountInput = document.querySelector('#AmountInput')
+        const paymentBtn = document.querySelector('#PaymentBtn')
+
+        // Bank detaills
+        const account_number = document.getElementById("account_number");
+        const account_name = document.getElementById("account_name");
+        const bank_name = document.getElementById("bank_name");
+        const swift_code = document.getElementById("swift_code");
+
+        // Crypto details
+        const wallet_address = document.getElementById("wallet_address");
+
+        // Paypal details
+        const paypal_email = document.getElementById("paypal_email");
+
+        // CashTag details
+        const cashtag = document.getElementById("cashtag");
+
+        bank_details.style.display = "none"
+        paypalDetails.style.display = "none"
+        cashTagDetails.style.display = "none"
+        wallet_details.style.display = "none"
+
+        amountInput.style.display = "none"
+        paymentBtn.style.display = "none"
+
+        // Bank information required
+        account_number.removeAttribute("required")
+        account_name.removeAttribute("required")
+        bank_name.removeAttribute("required")
+        swift_code.removeAttribute("required")
+
+        wallet_address.removeAttribute("required")
+        paypal_email.removeAttribute("required")
+        cashtag.removeAttribute("required")
+        
+
+
+        changePaymentDetails.addEventListener('change', (e) => {
+            if (e.target.value === "BankTransfer"){
+                bank_details.style.display = "block"
+                paypalDetails.style.display = "none"
+                cashTagDetails.style.display = "none"
+                wallet_details.style.display = "none"
+                amountInput.style.display = "block"
+                paymentBtn.style.display = "block"
+
+                // Bank information required
+                account_number.setAttribute("required", "")
+                account_name.setAttribute("required", "")
+                bank_name.setAttribute("required", "")
+                swift_code.setAttribute("required", "")
+
+                wallet_address.removeAttribute("required")
+                paypal_email.removeAttribute("required")
+                cashtag.removeAttribute("required")
+
+
+            } else if (e.target.value === "CashApp") {
+                cashTagDetails.style.display = "block"
+                bank_details.style.display = "none"
+                paypalDetails.style.display = "none"
+                wallet_details.style.display = "none"
+                amountInput.style.display = "block"
+                paymentBtn.style.display = "block"
+
+                // CashApp tag required
+                cashtag.setAttribute("required", "")
+
+                account_number.removeAttribute("required")
+                account_name.removeAttribute("required")
+                bank_name.removeAttribute("required")
+                swift_code.removeAttribute("required")
+                wallet_address.removeAttribute("required")
+                paypal_email.removeAttribute("required")
+                
+
+            } else if (e.target.value === "Paypal"){
+                cashTagDetails.style.display = "none"
+                bank_details.style.display = "none"
+                wallet_details.style.display = "none"
+                paypalDetails.style.display = "block"
+                amountInput.style.display = "block"
+                paymentBtn.style.display = "block"
+
+                // Paypal email required
+                paypal_email.setAttribute("required", "")
+
+                account_number.removeAttribute("required")
+                account_name.removeAttribute("required")
+                bank_name.removeAttribute("required")
+                swift_code.removeAttribute("required")
+                wallet_address.removeAttribute("required")
+                cashtag.removeAttribute("required")
+
+
+            } else if (e.target.value === "Etherium") {
+                cashTagDetails.style.display = "none"
+                bank_details.style.display = "none"
+                wallet_details.style.display = "block"
+                paypalDetails.style.display = "none"
+                amountInput.style.display = "block"
+                paymentBtn.style.display = "block"
+
+                // Wallet address required
+                wallet_address.setAttribute("required", "")
+
+                account_number.removeAttribute("required")
+                account_name.removeAttribute("required")
+                bank_name.removeAttribute("required")
+                swift_code.removeAttribute("required")
+                paypal_email.removeAttribute("required")
+                cashtag.removeAttribute("required")
+
+            } else if (e.target.value === "Bitcoin"){
+                cashTagDetails.style.display = "none"
+                bank_details.style.display = "none"
+                wallet_details.style.display = "block"
+                paypalDetails.style.display = "none"
+                amountInput.style.display = "block"
+                paymentBtn.style.display = "block"
+
+                // Wallet Address required
+                wallet_address.setAttribute("required", "")
+
+                account_number.removeAttribute("required")
+                account_name.removeAttribute("required")
+                bank_name.removeAttribute("required")
+                swift_code.removeAttribute("required")
+                paypal_email.removeAttribute("required")
+                cashtag.removeAttribute("required")
+            } else {
+                cashTagDetails.style.display = "none"
+                bank_details.style.display = "none"
+                wallet_details.style.display = "none"
+                paypalDetails.style.display = "none"
+                amountInput.style.display = "none"
+                paymentBtn.style.display = "none"
+
+                // Wallet Address required
+                wallet_address.removeAttribute("required")
+
+                account_number.removeAttribute("required")
+                account_name.removeAttribute("required")
+                bank_name.removeAttribute("required")
+                swift_code.removeAttribute("required")
+                paypal_email.removeAttribute("required")
+                cashtag.removeAttribute("required")
+            }
+        })
+
+
+    </script>
+
+
+    <script src="{% static 'js/jquery1-3.4.1.min.js' %}"></script>
+
+    <script src="{% static 'js/popper1.min.js' %}"></script>
+
+    <script src="{% static 'js/bootstrap1.min.js' %}"></script>
+
+    <script src="{% static 'js/metisMenu.js' %}"></script>
+
+    <script src="{% static 'vendors/scroll/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'vendors/scroll/scrollable-custom.js' %}"></script>
+
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>BitCrypto</title>
+    <link rel="icon" href="{% static 'img/mini_logo.png' %}" type="image/png">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap1.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/themefy_icon/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/font_awesome/css/all.min.css' %}" />
+
+
+    <link rel="stylesheet" href="{% static 'vendors/scroll/scrollable.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/metisMenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorSkinCSS">
+</head>
+
+<body class="crm_body_bg">
+
+    <nav class="sidebar dark_sidebar">
+        <div class="logo d-flex justify-content-between">
+            <a class="large_logo" href="#"><img src="{% static 'img/logo_white.png' %}" alt=""></a>
+            <a class="small_logo" href="#"><img src="{% static 'img/mini_logo.png' %}" alt=""></a>
+            <div class="sidebar_close_icon d-lg-none">
+                <i class="ti-close"></i>
+            </div>
+        </div>
+        <ul id="sidebar_menu">
+            <li class="">
+                <a href="{% url 'dashboard' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/1.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'deposit' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/2.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Deposit</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'withdraw' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Withdrawal</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'transfer' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/7.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Funds Transfer</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'history' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/5.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Transaction History</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'settings' %}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{% static 'img/menu-icon/General.svg' %}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Settings</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="main_content dashboard_part large_header_bg">
+
+        <div class="container-fluid g-0">
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            <img src="{% static 'img/line_img.png' %}" alt="">
+                        </div>
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <div class="header_notification_warp d-flex align-items-center">
+                                
+                            </div>
+                            <div class="profile_info d-flex align-items-center">
+                                <div class="profile_thumb mr_20">
+                                    <img src="{% static 'assets/Male.png' %}" alt="#">
+                                </div>
+                                <div class="author_name">
+                                    <h4 class="f_s_15 f_w_500 mb-0">{{request.user.username}}</h4>
+                                    <p class="f_s_12 f_w_400">Customer</p>
+                                </div>
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Hi,</p>
+                                        <h5>{{request.user.username}}!</h5>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <a href="{% url 'settings' %}">My Profile </a>
+                                        <a href="{% url 'settings' %}">Settings</a>
+                                        <a href="{% url 'logout' %}">Log Out </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_content_iner ">
+            <div class="main_content_iner overly_inner ">
+                <div class="container-fluid p-0 ">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="page_title_left">
+                                    <h3 class="mb-0">Dashboard</h3>
+                                    <!-- <p>Dashboard/Crypto currenct</p> -->
+                                </div>
+                                <!-- <div class="monitor_list_widget">
+                                    <div class="simgle_monitor_list">
+                                        <div class="simgle_monitor_count d-flex align-items-center">
+                                            <span>Purchase</span>
+                                            <div id="monitor_1"></div>
+                                        </div>
+                                        <h4 class="counter">6,250</h4>
+                                    </div>
+                                    <div class="simgle_monitor_list">
+                                        <div class="simgle_monitor_count d-flex align-items-center">
+                                            <span>Purchase</span>
+                                            <div id="monitor_2"></div>
+                                        </div>
+                                        <h4>$ <span class="counter">55,250</span> </h4>
+                                    </div>
+                                    <div class="simgle_monitor_list">
+                                        <div class="simgle_monitor_count d-flex align-items-center">
+                                            <span>Purchase</span>
+                                            <div id="monitor_3"></div>
+                                        </div>
+                                        <h4>$ <span class="counter">451.6 </span>M </h4>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-xl-12">
+                            <div class="white_card  mb_30">
+                                <div class="white_card_header ">
+                                    <div class="box_header m-0">
+                                        <ul></ul>
+                                        
+                                        <div class="button_wizerd">
+                                            <a href="#" class="white_btn">Settings</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="white_card_body anlite_table p-0">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <div class="single_analite_content">
+                                                <h4>Total Income</h4>
+                                                <h3>$ <span class="counter">{{request.user.balance}}</span> </h3>
+                                                <div class="d-flex">
+                                                    <!-- <div>3.78 <i class="fa fa-caret-up"></i></div> -->
+                                                    <span>This month</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="single_analite_content">
+                                                <h4>Transactions</h4>
+                                                <h3><span class="counter">{{transaction_count}}</span> </h3>
+                                                <div class="d-flex">
+                                                    <!-- <div>3.78<i class="fa fa-caret-up"></i></div> -->
+                                                    <span>This month</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <!-- <div class="single_analite_content">
+                                                <h4>Ethereum Wallet</h4>
+                                                <h3><span class="counter">8025</span> </h3>
+                                                <div class="d-flex">
+                                                    <div>3.78 <i class="fa fa-caret-up"></i></div>
+                                                    <span>This month</span>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class="col-lg-3">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="page_title_left mb_10">
+                                    <h3 class="mb-0">Overview</h3>
+                                    <p>Statistics, Predictive Analytics Data Visualization, Big Data Analytics, etc.</p>
+                                </div>
+                                <div class="page_title_right">
+                                    <div class="dropdown CRM_dropdown  mr_5 mb_10">
+                                        <button class="btn" type="button" id=""
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            14 March 2020 
+                                        </button>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-12">
+                            <div class="white_card card_height_100 mb_30">
+                                <div class="white_card_header">
+                                    <div class="box_header m-0">
+                                        <div class="main-title">
+                                            <h3 class="m-0">Your Portfolio</h3>
+                                        </div>
+                                        <div class="header_more_tool">
+                                            <div class="dropdown">
+                                                <span class="dropdown-toggle" id="dropdownMenuButton"
+                                                    data-bs-toggle="dropdown">
+                                                    <i class="ti-more-alt"></i>
+                                                </span>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
+                                                    <a class="dropdown-item" href="#"> <i class="ti-trash"></i>
+                                                        Delete</a>
+                                                    <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i>
+                                                        Edit</a>
+                                                    <a class="dropdown-item" href="#"> <i class="ti-printer"></i>
+                                                        Print</a>
+                                                    <a class="dropdown-item" href="#"> <i class="fa fa-download"></i>
+                                                        Download</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="white_card_body">
+                                    <div class="row justify-content-center mb_30  ">
+                                        <div class="col-12 text-center">
+                                            <h4 class="f_s_22 f_w_700 mb-0">${{request.user.balance}}</h4>
+                                            <p class="f_s_11 f_w_400">Total Balance</p>
+                                        </div>
+                                    </div>
+                                    <div class="social_media_list">
+                                        {% for transaction in transactions %}
+                                        <div class="single_media d-flex justify-content-between align-items-center">
+                                            <span class="mediaName"> <img src="{{ transaction.assetImageURL }}"
+                                                    alt=""> {{transaction.transaction_type.capitalize}}</span>
+                                            <span class="earning_amount">
+                                                <h4>${{ transaction.amount }}</h4>
+                                                <!-- <p>0.125 USD</p> -->
+                                            </span>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <div class="white_card mb_30 card_height_100">
+                                <div class="white_card_header ">
+                                    <div class="box_header m-0">
+                                        <div class="main-title">
+                                            <h3 class="m-0">Recent Activities</h3>
+                                        </div>
+                                        <a href="#">
+                                            <p>View all</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="white_card_body pt-0">
+                                    <div class="QA_section">
+                                        <div class="QA_table mb-0 transaction-table">
+
+                                            <div class="table-responsive">
+                                                <table class="table  ">
+                                                    <tbody>
+                                                        {% for transaction in transactions %}
+                                                        <tr>
+                                                            <td scope="row">
+                                                                <span class="sold-thumb"><i
+                                                                        class="ti-arrow-up"></i></span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-danger">Sold</span>
+                                                            </td>
+                                                            <td> <img class="small_img"
+                                                                    src="{{ transaction.assetImageURL }}" alt="">
+                                                                    {{transaction.transaction_type.capitalize}} </td>
+                                                            <!-- <td>Using - Bank......4585 </td> -->
+                                                            <td>$ {{ transaction.amount }}</td>
+                                                            <!-- <td>-0.454 USD</td> -->
+                                                        </tr>
+                                                        {% endfor %}
+                                                        
+                                                        
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer_iner text-center">
+                            <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#">
+                                    DashboardPack</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <div id="back-top" style="display: none;">
+        <a title="Go to Top" href="#">
+            <i class="ti-angle-up"></i>
+        </a>
+    </div>
+
+
+    <script src="{% static 'js/jquery1-3.4.1.min.js' %}"></script>
+
+    <script src="{% static 'js/popper1.min.js' %}"></script>
+
+    <script src="{% static 'js/bootstrap1.min.js' %}"></script>
+
+    <script src="{% static 'js/metisMenu.js' %}"></script>
+
+    <script src="{% static 'vendors/scroll/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'vendors/scroll/scrollable-custom.js' %}"></script>
+
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
