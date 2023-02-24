@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diamond Horizon Bank - Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     {% compress css %}
     <link rel="stylesheet" href="{% static 'src/output.css' %}">
     <link rel="icon" href="{% static 'assets/diamond - cropped (2).png' %}" type="image/png">
@@ -17,8 +20,9 @@
 <body>
     <!-- navbar -->
     <style>
-        body {
+        * {
             overflow-x: hidden !important;
+            font-family: 'Poppins', sans-serif !important;
         }
     </style>
     <div class="flex justify-between items-center w-full bg-[#30a52e]">
@@ -26,7 +30,7 @@
             <div class="left xl:mr-80">
                 <ul class="flex items-center">
                     <li class="lg:text-[1.2rem] p-2">
-                        <a href="">
+                        <a href="{% url 'home' %}">
                             <img  class="md:w-[150px] " src=" {% static 'assets/diamond-on-dark.png' %}" height="26" alt="app-logo">
                         </a>
                     </li>
@@ -40,7 +44,7 @@
                         <li class="transition-all duration-500 ease-in-out text-white bg-[#016076] rounded-lg px-4 lg:text-[1rem] p-2 my-5 hover:text-[#016076] hover:bg-white cursor-pointer">Sign Up</a>
                     </a>
                     <a href="{% url 'login' %}">
-                        <li class="transition-all duration-500 ease-in-out text-white lg:text-[1rem] p-2 my-5 hover:bg-[#f50404] rounded-lg mx-4 px-5 cursor-pointer">Login</li>
+                        <li class="transition-all duration-500 ease-in-out text-white lg:text-[1rem] p-2 my-5 hover:bg-[#f50404] rounded-lg mx-4 px-5 cursor-pointer border-solid border-[1px] border-slate-200">Login</li>
                     </a>
                     
                 </ul>

@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diamond Horizon Bank - Online Banking made easy | Open an account online.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     {% compress css %}
     <link rel="stylesheet" href="{% static 'src/output.css' %}">
     <link rel="icon" href="{% static 'assets/diamond - cropped (2).png' %}" type="image/png">
@@ -15,8 +18,10 @@
 </head>
 <body class="overflow-x-hidden">
     <style>
-        body {
+        /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap'); */
+        * {
             overflow-x: hidden !important;
+            font-family: 'Poppins', sans-serif !important;
         }
     </style>
     <div class="flex justify-between items-center w-full bg-[#30a52e]">
@@ -24,7 +29,7 @@
             <div class="left xl:mr-80">
                 <ul class="flex items-center">
                     <li class="lg:text-[1.2rem] p-2">
-                        <a href="">
+                        <a href="{% url 'home' %}">
                             <img  class="md:w-[150px] " src=" {% static 'assets/diamond-on-dark.png' %}" height="26" alt="app-logo">
                         </a>
                     </li>
@@ -38,7 +43,7 @@
                         <li class="transition-all duration-500 ease-in-out text-white bg-[#016076] rounded-lg px-4 lg:text-[1rem] p-2 my-5 hover:text-[#016076] hover:bg-white cursor-pointer">Sign Up</a>
                     </a>
                     <a href="{% url 'login' %}">
-                        <li class="transition-all duration-500 ease-in-out text-white lg:text-[1rem] p-2 my-5 hover:bg-[#f50404] rounded-lg mx-4 px-5 cursor-pointer">Login</li>
+                        <li class="transition-all duration-500 ease-in-out text-white lg:text-[1rem] p-2 my-5 hover:bg-[#f50404] rounded-lg mx-4 px-5 cursor-pointer border-solid border-[1px] border-slate-200">Login</li>
                     </a>
                     
                 </ul>
@@ -49,7 +54,9 @@
     <!-- Mobile Menu -->
 
     <nav class="px-12 py-4 flex justify-between items-center bg-[#30a52e] lg:hidden">
-        <img class="w-[160px] h-[53px] border-r-[1px] border-solid border-gray-400" src="{% static 'assets/diamond-on-dark.png' %}" alt="">
+        <a href="{% url 'home' %}">
+            <img class="w-[160px] h-[53px]" src="{% static 'assets/diamond-on-dark.png' %}" alt="">
+        </a>
         <span onclick="document.querySelector('.mobile__nav').classList.remove('hidden')" class="open__nav hover:cursor-pointer text-white text-xl">Menu</span>
     </nav>
 
@@ -60,7 +67,7 @@
     <section class="w-full bg-[#30a52e] flex justify-center items-center px-12">
         <div class="lg:w-fit lg:px-16 flex lg:flex-row xl:flex-row-reverse items-center flex-col-reverse">
             <div class="mt-20 flex-1 lg:m-16 max-w-[600px] lg:mt-0">
-                <h3 class="text-4xl text-red-600 font-bold lg:text-3xl xl:text-3xl">Banking made easy</h3>
+                <h3 class="text-4xl text-slate-600 font-bold lg:text-3xl">Banking made easy</h3>
                 <p class="text-white lg:text-lg my-6">Spend, save and manage your money, all in one place. Open a full UK bank account from your phone, for free.</p>
                 <div class="flex flex-wrap">
                     <button class="hover:opacity-[0.8] mb-5 md:mb-0 rounded-md bg-[#016076] text-white font-bold py-3 block lg:px-20 w-full lg:mb-4 xl:mb-0 lg:text-lg">
@@ -275,7 +282,7 @@
         </div>
     </section>
 
-    <section class="h-fit my-12 justify-start flex xl:mt-[5rem] xl:mb-[5rem] w-full">
+    <section class="h-fit my-12 justify-start flex xl:mt-[5rem] xl:mb-[5rem] w-full lg:ml-24">
         <div class="lg:max-w-[60rem] text-center lg:text-left">
             <p class="bg-[#F2F8F3] mb-8 w-fit px-4 rounded-md">Published August 2022</p>
             <h1 class="mb-8 font-bold text-2xl">Independent service quality survey results</h1>
@@ -284,7 +291,7 @@
         </div>
     </section>
 
-    <section class="w-full justify-center items-center">
+    <section class="w-full justify-center items-center lg:ml-24">
         <div class="h-fit my-12 justify-start flex flex-col md:flex-row xl:mt-[5rem] xl:mb-[5rem]">
             <div class="mx-5 mb-12 md:mb-0 flex flex-col items-center lg:items-start justify-center">
                 <h3 class="font-bold text-2xl">Great Britain</h3>
@@ -326,7 +333,9 @@
             <div class="relative w-full h-full">
                 <div class="w-full max-w-[86rem] mx-auto">
                     <div class="flex justify-between items-center p-5">
-                        <img class="w-[129px]" src="{% static 'assets/diamond-on-dark.png' %}" alt="">
+                        <a href="{% url 'home' %}">
+                            <img class="w-[129px]" src="{% static 'assets/diamond-on-dark.png' %}" alt="">
+                        </a>
                         <img onclick="document.querySelector('.mobile__nav').classList.add('hidden')" id="close" class="w-[15px] h-[15px] hover:cursor-pointer" src="{% static 'assets/close.png' %}" alt="">
                     </div>
                     <div class="mx-10 mt-12 w-full">
