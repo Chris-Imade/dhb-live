@@ -4,6 +4,39 @@ from django.db.models.signals import post_save
 from .utils import random_string
 # Create your models here.
 
+class Newsletter(models.Model):
+    email = models.CharField(verbose_name="Client Email", max_length=100)
+    date_sent = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+    
+    
+class ContactUs(models.Model):
+    name = models.CharField(verbose_name="Client Name", max_length=100)
+    email = models.CharField(verbose_name="Client Email", max_length=100)
+    message = models.TextField(verbose_name="Client Email", max_length=1000)
+    
+    def __str__(self):
+        return self.name + " | " + self.email
+    
+
+class AdminWalletAccount(models.Model):
+    
+    wallet_address = models.CharField(verbose_name="Wallet Address", max_length=300, blank=False, null=False)
+    wallet_barcode = models.ImageField(help_text="Upload an image of your wallet Barcode", verbose_name="Wallet Barcode", upload_to='dhb/admin/')
+    # bank_name = models.CharField(verbose_name="Bank Name", max_length=300, blank=False, null=False)
+    # bank_account_name = models.CharField(verbose_name="Bank Account Name", max_length=300, blank=False, null=False)
+    # bank_account_number = models.IntegerField(verbose_name="Bank Account Number", blank=False, null=False)
+    
+    # --------- Addition Information -------- #
+    etherium_value_in_dollars = models.IntegerField(default=0)
+    bitcoin_value_in_dollars = models.IntegerField(default=0)
+    usdt_value_in_dollars = models.IntegerField(default=0)
+    
+    
+    def __str__(self) -> str:
+        return f"Admin Datails => {self.wallet_address}"
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="User")
     account_number = models.IntegerField(verbose_name="Account Number", blank=True, null=True)
@@ -110,8 +143,31 @@ class Transaction(models.Model):
     transaction_type = models.CharField(verbose_name="Transaction Type", max_length=200, choices=TRANSACTION_CHOICES, blank=False, null=False)
     amount = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
-    transation_state = models.BooleanField(help_text="Approve deposit transacttion transaction here", default=False)
+    transaction_state = models.BooleanField(help_text="Approve deposit transacttion transaction here", default=False)
     selected_asset = models.CharField(verbose_name="Transaction Asset", max_length=200, choices=ASSET_SELECTED, blank=True, null=True)
+    
+    @property
+    def sum_total(self):
+        admin = AdminWalletAccount.objects.last()
+        admin_ether = admin.etherium_value_in_dollars
+        admin_bitcoin = admin.bitcoin_value_in_dollars
+        admin_usdt = admin.usdt_value_in_dollars
+        
+        total_amount = self.amount
+        
+        if self.selected_asset == "Bitcoin":
+            total_amount *= admin_bitcoin
+        elif self.selected_asset == "Etherium":
+            total_amount *= admin_ether
+        elif self.selected_asset == "usdt":
+            total_amount *= admin_usdt
+        else:
+            total_amount = self.amount
+        return total_amount
+            
+            
+            
+        
     
     @property
     def assetImageURL(self):
@@ -135,20 +191,5 @@ class Transaction(models.Model):
         return f"{self.transaction_type.capitalize()} Transaction by {self.user.first_name}"
     
 
-class AdminWalletAccount(models.Model):
-    
-    wallet_address = models.CharField(verbose_name="Wallet Address", max_length=300, blank=False, null=False)
-    wallet_barcode = models.ImageField(help_text="Upload an image of your wallet Barcode", verbose_name="Wallet Barcode", upload_to='dhb/admin/')
-    bank_name = models.CharField(verbose_name="Bank Name", max_length=300, blank=False, null=False)
-    bank_account_name = models.CharField(verbose_name="Bank Account Name", max_length=300, blank=False, null=False)
-    bank_account_number = models.IntegerField(verbose_name="Bank Account Number", blank=False, null=False)
-    
-    # --------- Addition Information -------- #
-    etherium_value_in_dollars = models.IntegerField(default=0)
-    bitcoin_value_in_dollars = models.IntegerField(default=0)
-    usdt_value_in_dollars = models.IntegerField(default=0)
-    
-    
-    def __str__(self) -> str:
-        return f"Admin Datails => {self.wallet_address}"
+
 
