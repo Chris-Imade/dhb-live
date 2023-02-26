@@ -24,6 +24,9 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header  =  "Diamond Horizon Bank Administration"  
+admin.site.site_title  =  "Diamond Horizon Bank"
+admin.site.index_title  =  "DASHBOARD"
 
 urlpatterns = [
     # path('admin/', admin.site.urls),

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from accounts.models import User
-from core.models import Transaction
+from core.models import Transaction, Newsletter
 from django.contrib import messages
 
 # Create your views here
@@ -18,4 +18,13 @@ def deposit_api_view(request):
         )
         transaction.save()
         messages.success(request, "Your transaction is being processed. A confirmation mail will be sent to you upon confirmation.")
+    return Response({})
+
+@api_view(['GET', 'POST'])
+def send_newsletter(request):
+    if request.method == 'POST':
+        newsletter = Newsletter(email=request.data.get("email"))
+        newsletter.save()
+        messages.success(request, "Newsletter request was submitted successfully. Thank you!")
+        
     return Response({})

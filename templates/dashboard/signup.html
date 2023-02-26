@@ -5,8 +5,8 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Register - Diamond Horizon Bank</title>
-    <link rel="icon" href="{% static 'assets/diamond - cropped (2).png' %}" type="image/png">
+    <title>Diamond Horizon Bank</title>
+    <link rel="icon" href="{% static 'assets/diamond-on-dark.png' %}" type="image/png">
 
     <link rel="stylesheet" href="{% static 'css/bootstrap1.min.css' %}" />
 
@@ -21,6 +21,14 @@
     <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
     <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorSkinCSS">
 
+    <style>
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 
 <body style="padding: 3rem 3rem 0 3rem;" class="crm_body_bg">
@@ -123,7 +131,12 @@
             <i class="ti-angle-up"></i>
         </a>
     </div>
-
+    <script>
+        const insertTrueDate = document.getElementById("insertTrueDate")
+        const getRecentYear = document.getElementById("getRecentYear") 
+        insertTrueDate.innerHTML = new Date().toDateString()
+        getRecentYear.innerHTML = new Date().getFullYear()
+    </script>
 
     <script src="{% static 'js/jquery1-3.4.1.min.js' %}"></script>
 

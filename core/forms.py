@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account
+from .models import Account, Newsletter, ContactUs
 
 
 class AccountDetailsEditForm(forms.ModelForm):
@@ -60,5 +60,47 @@ class AccountDetailsEditForm(forms.ModelForm):
         }
 
 
-
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = ["email",]
+        widgets = {
+            'email': forms.TextInput(attrs={
+                'type': 'email',
+                'placeholder':"Please enter your email...",
+                "class": "w-full shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light", 
+                'required':"", 
+            }),
+        }
+        
+        
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactUs
+        fields = ["name", "email", "message"]
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'type': 'text',
+                'placeholder':"Name",
+                "class": "form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none", 
+                'required':"",
+                "id": "exampleInput7"
+            }),
+            'email': forms.TextInput(attrs={
+                'type': 'email',
+                'placeholder':"Email Address",
+                "class": "form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none", 
+                'required':"",
+                "id": "exampleInput8"
+            }),
+            'message': forms.Textarea(attrs={
+                'type': 'text',
+                "class": "orm-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none", 
+                'required':"",
+                "id": "exampleFormControlTextarea13",
+                "rows":"3",
+                "placeholder":"Message",
+            }),
+        }
+    
 

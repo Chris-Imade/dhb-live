@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from accounts.forms import MyPassWordChangeForm, UserEditForm
-from core.forms import AccountDetailsEditForm
+from core.forms import AccountDetailsEditForm, NewsletterForm, ContactForm
 from django.contrib.auth import update_session_auth_hash
 from core.models import Transaction, Withdrawal, AdminWalletAccount, Transfer
 from django.contrib import messages
@@ -14,10 +14,34 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'about.html', {})
+    form = NewsletterForm()
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Newsletter request was submitted successfully. Thank you!")
+            return redirect("about")
+    return render(request, 'about.html', {
+        "form": form
+    })
 
 def contact(request):
-    return render(request, 'contact.html', {})
+    newsletter_form = NewsletterForm()
+    contact_form = ContactForm()
+    if request.method == 'POST' and "sendNewsLetter" in request.POST:
+        newsletter_form = NewsletterForm(request.POST)
+        if newsletter_form.is_valid():
+            newsletter_form.save()
+            messages.success(request, "Newsletter request was submitted successfully. Thank you!")
+            return redirect("contact")
+        
+    elif request.method == 'POST' and 'sendContactMessage' in request.POST:
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            contact_form.save()
+            messages.success(request, "Thank you for reaching out. A member of our team will get back to you... ")
+            return redirect("contact")
+    return render(request, 'contact.html', {"newsletter_form": newsletter_form, "contact_form": contact_form})
 
 @login_required
 def dashboard(request):
@@ -32,13 +56,18 @@ def dashboard(request):
     # Generate ransomeware code in python 
     withdrawal = Withdrawal.objects.filter(user=request.user)
     withdrawal_count = Withdrawal.objects.filter(user=request.user).count()
+    
+    total_for_deposits = 0
+    for deposit in transaction_deposits_accepted:
+        total_for_deposits += deposit.amount
 
     return render(request, 'dashboard/dashboard.html', {
         "transactions":transactions,
         "transaction_count":transaction_count,
         "withdrawal": withdrawal,
         "withdrawal_count": withdrawal_count,
-        "transaction_deposit": transaction_deposits_accepted,
+        "transaction_deposits": transaction_deposits_accepted,
+        "total_for_deposits": total_for_deposits,
 
     })
 
