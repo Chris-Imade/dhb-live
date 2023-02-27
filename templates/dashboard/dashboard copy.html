@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap1.min.css' %}" />
 
     <link rel="stylesheet" href="{% static 'vendors/themefy_icon/themify-icons.css' %}" />
+    
     <link rel="stylesheet" href="{% static 'vendors/font_awesome/css/all.min.css' %}" />
 
 
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="{% static 'css/metisMenu.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+
     <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorSkinCSS">
 
 
@@ -415,37 +417,24 @@
     </div>
 
     <script>
-        const insertTrueDate = document.getElementById("insertTrueDate");
-        const getRecentYear = document.getElementById("getRecentYear");
-        insertTrueDate.innerHTML = new Date().toDateString();
-        getRecentYear.innerHTML = new Date().getFullYear();
-
-
-        let menu = document.querySelector(".ti-menu");
-        let close = document.querySelector(".ti-close");
-        let sidebar = document.querySelector(".sidebar");
-
-        menu.addEventListener("click", () => {
-            sidebar.classList.add("active_sidebar");
-        });
-
-        close.addEventListener("click", () => {
-            sidebar.classList.remove("active_sidebar");
-        });
+        const insertTrueDate = document.getElementById("insertTrueDate")
+        const getRecentYear = document.getElementById("getRecentYear") 
+        insertTrueDate.innerHTML = new Date().toDateString()
+        getRecentYear.innerHTML = new Date().getFullYear()
     </script>
 
 
-<script src="{% static 'js/jquery1-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery1-3.4.1.min.js' %}"></script>
 
-<script src="{% static 'js/popper1.min.js' %}"></script>
+    <script src="{% static 'js/popper1.min.js' %}"></script>
 
-<script src="{% static 'js/bootstrap1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap1.min.js' %}"></script>
 
-<script src="{% static 'js/metisMenu.js' %}"></script>
+    <script src="{% static 'js/metisMenu.js' %}"></script>
 
-<script src="{% static 'vendors/scroll/perfect-scrollbar.min.js' %}"></script>
-<script src="{% static 'vendors/scroll/scrollable-custom.js' %}"></script>
+    <script src="{% static 'vendors/scroll/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'vendors/scroll/scrollable-custom.js' %}"></script>
 
-<script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
 </body>
 </html>
