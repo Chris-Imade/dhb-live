@@ -432,6 +432,13 @@
         close.addEventListener("click", () => {
             sidebar.classList.remove("active_sidebar");
         });
+
+        window.addEventListener("click", (e) => {
+            // if(e.target){
+            //     sidebar.classList.remove("active_sidebar");
+            // }
+            console.log(e.target);
+        })
     </script>
 
 

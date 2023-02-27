@@ -22,3 +22,4 @@ urlpatterns = [
     path('withdraw/', withdraw, name="withdraw"),
     path('transfer/', transfer, name="transfer"),
 ]
+

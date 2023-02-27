@@ -10,7 +10,16 @@ import ast
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html', {})
+    form = NewsletterForm()
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Newsletter request was submitted successfully. Thank you!")
+            return redirect("home")
+    return render(request, 'index.html', {
+        "form": form
+    })
 
 
 def about(request):
@@ -43,7 +52,7 @@ def contact(request):
             return redirect("contact")
     return render(request, 'contact.html', {"newsletter_form": newsletter_form, "contact_form": contact_form})
 
-@login_required
+@login_required(login_url="login")
 def dashboard(request):
     transactions = Transaction.objects.filter(user=request.user)
     transaction_count = Transaction.objects.filter(user=request.user).count()
@@ -73,7 +82,7 @@ def dashboard(request):
 
 
 
-@login_required
+@login_required(login_url="login")
 def settings(request):
     password_change_form = MyPassWordChangeForm(user=request.user)
     user_data_form = UserEditForm(instance=request.user)
@@ -113,7 +122,7 @@ def settings(request):
     
     return render(request, 'dashboard/settings.html', context)
 
-@login_required
+@login_required(login_url="login")
 def deposit(request):
     admin_details = AdminWalletAccount.objects.last()
     
@@ -121,7 +130,7 @@ def deposit(request):
     return render(request, 'dashboard/deposit.html', context)
 
 
-@login_required
+@login_required(login_url="login")
 def history(request):
     transactions = Transaction.objects.filter(user=request.user)
     
@@ -130,7 +139,7 @@ def history(request):
     }
     return render(request, 'dashboard/history.html', context)
 
-@login_required
+@login_required(login_url="login")
 def withdraw(request):
     if request.method == 'POST':
         cash_balance = request.POST.get('cash_balance', None)
@@ -172,7 +181,7 @@ def withdraw(request):
     context = {'user_balance': request.user.balance}
     return render(request, 'dashboard/withdraw.html', context)
 
-@login_required
+@login_required(login_url="login")
 def transfer(request):
     if request.method == 'POST':
         cash_balance = request.POST.get('cash_balance', None)

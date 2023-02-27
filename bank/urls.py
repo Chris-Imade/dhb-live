@@ -14,24 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+# from django.urls import path, include
 
 
 from django.contrib import admin
-# from django.urls import path
-# from django.urls.conf import include
+from django.urls import path
+from django.urls.conf import include
 
 from django.conf import settings
 from django.conf.urls.static import static
-
+from core.views import home
 admin.site.site_header  =  "Diamond Horizon Bank Administration"  
 admin.site.site_title  =  "Diamond Horizon Bank"
 admin.site.index_title  =  "DASHBOARD"
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path("admin/", admin.site.urls),
     path('', include('core.urls')),
+    path("admin/", admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('api/', include('api.urls')),
 ]
