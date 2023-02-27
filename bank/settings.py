@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["web-production-55c6.up.railway.app", "*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-55c6.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-55c6.up.railway.app', 'https://diamondhorizonbank.com']
 
 
 # Application definition
@@ -105,10 +105,21 @@ WSGI_APPLICATION = 'bank.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'TVq6xHLXs5utCWATEgiv',
+        'HOST': 'containers-us-west-151.railway.app',
+        'PORT': '6694',
     }
 }
 
