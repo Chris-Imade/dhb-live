@@ -50,7 +50,7 @@
             </div>
             
             
-            <div style="width: 90%; position: relative;">
+            <div class="modal__actions" style="width: 90%; position: relative;">
                 <button type="button" class="close-usdt mt_30 btn btn-danger position-absolute top-100 start-100 translate-middle">Close</button>
                 <button id="approvedUSDT" class="mt_30 btn btn-success position-absolute start-50 translate-middle">Approved</button>
             </div>
@@ -70,7 +70,7 @@
             </div>
             
             
-            <div style="width: 90%; position: relative;">
+            <div class="modal__actions" style="width: 90%; position: relative;">
                 <button type="button" class="close-ether mt_30 btn btn-danger position-absolute top-100 start-100 translate-middle">Close</button>
                 <button id="approvedETHER" class="mt_30 btn btn-success position-absolute start-50 translate-middle">Approved</button>
             </div>
@@ -90,7 +90,7 @@
             </div>
             
             
-            <div style="width: 90%; position: relative;">
+            <div class="modal__actions" style="width: 90%; position: relative;">
                 <button type="button" class="close-btc mt_30 btn btn-danger position-absolute top-100 start-100 translate-middle">Close</button>
                 <button id="approvedBTC" class="mt_30 btn btn-success position-absolute start-50 translate-middle">Approved</button>
             </div>
@@ -374,23 +374,52 @@
                 justify-content: center;
                 align-items: center;
             }
-            .show{
+            .show{  
                 display: block !important;
             }
             .modal__content {
                 border-radius: 20px;
                 background-color: white;
                 padding: 20px;
-                width: 500px;
-                height: 350px;
+                max-width: 500px;
+                min-height: 410px;
                 -webkit-box-shadow: -2px -1px 15px 7px rgba(0,0,0,0.5);
                 -moz-box-shadow: -3px -2px 30px 14px rgba(0,0,0,0.425);
                 box-shadow: -4px -3px 45px 21px rgba(0,0,0,0.35);
-                margin-top: 200px;
-                margin-left: 500px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .addrs {
+                margin-bottom: 20px;
             }
             .addrs:hover {
                 text-decoration: underline;
+            }
+
+            .modal__actions {
+                margin-left: -4rem;
+                margin: 2rem 0;
+            }
+            @media screen and (max-width: 800px) {
+                .modal__actions {
+                    margin-left: -2rem;
+                }
+                .modal__content {
+                    border-radius: 20px;
+                    background-color: white;
+                    padding: 20px;
+                    max-width: 500px;
+                    min-height: 430px;
+                    -webkit-box-shadow: -2px -1px 15px 7px rgba(0,0,0,0.5);
+                    -moz-box-shadow: -3px -2px 30px 14px rgba(0,0,0,0.425);
+                    box-shadow: -4px -3px 45px 21px rgba(0,0,0,0.35);
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
             }
         </style>
         
